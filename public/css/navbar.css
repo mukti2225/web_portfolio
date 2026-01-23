@@ -1,0 +1,105 @@
+.navbar {
+    background: linear-gradient(180deg, #0a0a0a79 -10%, #1a1a1a00 100%);
+    padding: 1rem 0;
+    margin-bottom: -100px;
+    /* backdrop-filter: blur(1px); */
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #fff !important;
+}
+
+/* Pill-style Navigation Group */
+.nav-pill-group {
+    background: rgba(88, 88, 88, 0.3);
+    backdrop-filter: blur(7px);
+    border-radius: 50px;
+    padding: 0.6rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-pill-group .nav-item {
+    margin: 0;
+}
+
+.nav-pill-group .nav-link {
+    color: rgba(255, 255, 255, 0.7) !important;
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+.nav-pill-group .nav-link:hover {
+    color: #fff !important;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-pill-group .nav-link.active {
+    color: #fff !important;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Mobile Responsive */
+@media (max-width: 991px) {
+    .nav-pill-group {
+        flex-direction: column;
+        background: transparent;
+        padding: 0;
+        gap: 0.5rem;
+    }
+
+    .nav-pill-group .nav-link {
+        text-align: center;
+    }
+
+    .navbar-collapse {
+        background: rgba(20, 20, 20, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 12px;
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+}
+
+/* Smooth animations */
+.nav-link {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Icon styling */
+.bi {
+    font-size: 1.2rem;
+}
+
+.dropdown-menu {
+    background-color: rgba(0, 0, 0, 0.322);
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-menu .dropdown-item {
+    color: #fff;
+}
+
+/* Circle button for menu icon */
+.btn-outline-light.rounded-circle {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.btn-outline-light.rounded-circle:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.3);
+}

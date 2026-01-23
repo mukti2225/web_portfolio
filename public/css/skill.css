@@ -1,0 +1,68 @@
+.skill {
+    background-color: #121212;
+    color: white;
+    padding: 10px 10px;
+    min-height: 500px;
+    display: flex;
+}
+
+.skill .container {
+    height: auto;
+    justify-items: center;
+    align-items: center;
+}
+
+.skill .container h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #feffff;
+    margin-bottom: 0.5rem;
+}
+
+.skill .container p {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #6c757d;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.tech-card {
+    background-color: #1e1e1e;
+    /* border: 1px solid #6b6b6b6c; */
+    border-radius: 12px;
+    padding: 15px 20px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+}
+
+.tech-card:hover {
+    background-color: #252525;
+    /* border-color: #666666; */
+    transform: translateY(-2px);
+    color: rgb(73, 87, 214);
+}
+
+.tech-icon {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    margin-right: 15px;
+}
+
+.tech-info h1 {
+    font-size: 1.1rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+.tech-info h3 {
+    font-size: 0.85rem;
+    margin: 0;
+    color: #888;
+    font-weight: 400;
+}

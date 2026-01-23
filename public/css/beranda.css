@@ -1,0 +1,191 @@
+/* Container utama */
+.beranda {
+    background-color: #000;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0px;
+}
+
+/* Teks banner */
+.banner-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    text-align: left;
+}
+
+/* Dynamic text animation */
+.wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.static-text {
+    font-size: clamp(22px, 4vw, 40px);
+    font-weight: 600;
+    color: #fff;
+}
+
+#typed {
+    font-size: clamp(22px, 4vw, 40px);
+    font-weight: 700;
+    color: #ff5656;
+
+    display: inline-block;
+    min-width: 10ch;
+
+    opacity: 0;
+    transform: translateY(10px);
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+}
+
+#typed.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Deskripsi */
+.description {
+    font-size: 16px;
+    margin-top: 10px;
+    color: #fff;
+}
+
+/* Garis pemisah */
+hr {
+    border: 1px solid #fff;
+    margin: 10px 0;
+}
+
+/* Social icons */
+.social {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: start;
+}
+.social li {
+    display: inline-flex;
+    padding: 8px 15px;
+}
+.social li a {
+    color: #fff;
+}
+
+.social i {
+    font-size: 25px;
+}
+
+.social li a:hover {
+    color: #764ba2;
+}
+
+/* Gambar kanan */
+.hero-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 600px;
+    padding-bottom: 0;
+}
+.profile-img {
+    max-width: 100%;
+    width: 250px;
+    height: auto;
+    border-radius: 0;
+    position: relative;
+}
+
+/* Background Modern dengan Gradient dan Shapes */
+.hero-image::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    filter: blur(40px);
+    opacity: 0.6;
+    animation: morph 8s ease-in-out infinite;
+    z-index: -1;
+}
+
+.hero-image::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 350px;
+    background: linear-gradient(245deg, #9f1cad 0%, #ad2638 100%);
+    border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+    filter: blur(35px);
+    opacity: 0.4;
+    animation: morph 10s ease-in-out infinite reverse;
+    z-index: -1;
+}
+
+@keyframes morph {
+    0%,
+    100% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    25% {
+        border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
+    }
+    50% {
+        border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
+        transform: translate(-50%, -50%) rotate(180deg);
+    }
+    75% {
+        border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
+    }
+}
+
+@media (min-width: 768px) {
+    .profile-img {
+        width: 200px;
+    }
+}
+@media (min-width: 1200px) {
+    .profile-img {
+        width: 400px;
+    }
+}
+
+@media (max-width: 576px) {
+    .static-text,
+    #typed,
+    .social {
+        font-size: 30px;
+        text-align: center;
+    }
+}
+
+@media (min-width: 768px) {
+    .static-text,
+    #typed {
+        text-align: left;
+        font-size: 30px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .static-text,
+    #typed {
+        font-size: 40px;
+    }
+}

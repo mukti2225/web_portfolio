@@ -1,0 +1,33 @@
+.kontak {
+    height: 450px;
+}
+
+.kontak .profile-img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border: none;
+    background-color: rgb(39, 109, 109);
+}
+
+/* Tombol Kustom */
+.btn-start-project {
+    background-color: #1ace80;
+    color: #000;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-start-project:hover {
+    background-color: #19cc84;
+    color: #ffffff;
+    transform: scale(1.05);
+    box-shadow: 0px 5px 20px rgba(61, 242, 164, 0.185);
+}
+
+/* Efek saat diklik */
+.btn-start-project:active {
+    transform: scale(0.98);
+}
