@@ -1,21 +1,20 @@
 FROM php:8.4-fpm
 
-# Install dependencies
 RUN apt-get update && apt-get install -y \
-    libpq-dev \
-    libzip-dev \
-    libicu-dev \
-    zip \
-    unzip \
-    git \
+    libpq-dev libzip-dev libicu-dev zip unzip git \
     && docker-php-ext-install pdo_pgsql intl zip
 
-# Install composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
 
 COPY . .
+
+# buat folder yang diperlukan sebelum composer install
+RUN mkdir -p storage/framework/{cache,sessions,views} \
+    && mkdir -p storage/logs \
+    && mkdir -p bootstrap/cache \
+    && chown -R www-data:www-data storage bootstrap/cache
 
 RUN composer install --no-dev --optimize-autoloader
 
