@@ -38,7 +38,21 @@ class DesainResource extends Resource
                 Forms\Components\FileUpload::make('image')
                     ->label('Thumbnail')
                     ->image()
-                    ->directory('desains')
+                    // ->directory('desains')
+                    ->preserveFilenames()
+                    ->afterStateUpdated(function ($state, callable $set) {
+                        if (!$state) return;
+
+                        $path = 'products/' . uniqid() . '.' . $state->getClientOriginalExtension();
+
+                        SupabaseStorage::upload(
+                            $state->getRealPath(),
+                            $path
+                        );
+
+                        $set('image', $path);
+                     })
+                    ->dehydrated()
                     ->required(),
 
                 Forms\Components\TextInput::make('link')
@@ -53,7 +67,11 @@ class DesainResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make('image')
-                    ->label('Gambar'),
+                    ->label('Gambar')
+                    ->getStateUsing(fn ($record) =>
+                        SupabaseStorage::publicUrl($record->image)
+                        )
+                    ->height(80),
 
                 Tables\Columns\TextColumn::make('title')
                     ->label('Judul')
