@@ -28,6 +28,16 @@ return [
     |
     */
 
+    'supabase' => [
+    'driver' => 'supabase',
+    'key'    => env('SUPABASE_KEY'),
+    'url'    => env('SUPABASE_URL'),
+    'bucket' => env('SUPABASE_BUCKET'),
+    'endpoint' => env('SUPABASE_ENDPOINT'),
+    'public' => true,
+    'default_visibility' => 'public',
+    ],
+
     'disks' => [
 
         'local' => [
