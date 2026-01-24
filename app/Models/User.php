@@ -12,6 +12,14 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
+    // Tambahkan fungsi ini untuk izin login ke Filament
+    public function canAccessPanel(Panel $panel): bool
+    {
+        // Izinkan akun admin tadi untuk mengakses panel
+        return str_ends_with($this->email, '@gmail.com');
+    }
+
+
     /**
      * The attributes that are mass assignable.
      *

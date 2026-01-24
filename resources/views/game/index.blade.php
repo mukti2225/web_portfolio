@@ -22,7 +22,7 @@
             <!-- Section Header -->
             <div class="section-header">
                 <h1>Portfolio Gallery</h1>
-                <p>Koleksi karya terbaik kami dalam berbagai kategori desain dan pengembangan</p>
+                <p>A collection of featured projects across various design and development categories.</p>
             </div>
 
             <!-- Gallery Grid -->
