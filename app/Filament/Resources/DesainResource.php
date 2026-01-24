@@ -38,7 +38,6 @@ class DesainResource extends Resource
 
                 Forms\Components\FileUpload::make('image')
                     ->label('Thumbnail')
-                    ->image()
                     ->storeFiles(false)
                     ->maxSize(2048)
                     // ->directory('desains')
