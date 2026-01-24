@@ -29,5 +29,6 @@
         "DB_PORT": "3306",
         "DB_DATABASE": "website_portfolio",
         "DB_USERNAME": "root"
-    }
+    },
+    "outputDirectory": "public"
 }
