@@ -41,8 +41,8 @@ class DesainResource extends Resource
                     ->storeFiles(false)
                     ->maxSize(2048)
                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
-                    // ->directory('desains')
                     ->saveUploadedFileUsing(function ($file) {
+                        logger('UPLOAD DIPANGGIL');
                         $path = 'desains/' . uniqid() . '.' . $file->getClientOriginalExtension();
 
                         SupabaseStorage::upload(
