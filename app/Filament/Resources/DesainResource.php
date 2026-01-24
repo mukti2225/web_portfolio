@@ -8,6 +8,7 @@ use App\Models\Desain;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
+use App\Services\SupabaseStorage;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
@@ -38,21 +39,19 @@ class DesainResource extends Resource
                 Forms\Components\FileUpload::make('image')
                     ->label('Thumbnail')
                     ->image()
+                    ->storeFiles(false)
+                    ->maxSize(2048)
                     // ->directory('desains')
-                    ->preserveFilenames()
-                    ->afterStateUpdated(function ($state, callable $set) {
-                        if (!$state) return;
-
-                        $path = 'products/' . uniqid() . '.' . $state->getClientOriginalExtension();
+                    ->saveUploadedFileUsing(function ($file) {
+                        $path = 'desains/' . uniqid() . '.' . $file->getClientOriginalExtension();
 
                         SupabaseStorage::upload(
-                            $state->getRealPath(),
+                            $file->getRealPath(),
                             $path
                         );
 
-                        $set('image', $path);
+                        return $path;
                      })
-                    ->dehydrated()
                     ->required(),
 
                 Forms\Components\TextInput::make('link')
