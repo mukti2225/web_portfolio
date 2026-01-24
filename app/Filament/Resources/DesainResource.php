@@ -40,6 +40,7 @@ class DesainResource extends Resource
                     ->label('Thumbnail')
                     ->storeFiles(false)
                     ->maxSize(2048)
+                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
                     // ->directory('desains')
                     ->saveUploadedFileUsing(function ($file) {
                         $path = 'desains/' . uniqid() . '.' . $file->getClientOriginalExtension();
