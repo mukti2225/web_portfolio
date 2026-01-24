@@ -10,6 +10,8 @@
     "license": "MIT",
     "require": {
         "php": "^8.4",
+        "ext-pdo_pgsql": "*",
+        "ext-pgsql": "*",
         "ext-intl": "*",
         "ext-zip": "*",
         "filament/filament": "3.3",
