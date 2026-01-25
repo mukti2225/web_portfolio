@@ -19,5 +19,11 @@ RUN mkdir -p storage/framework/{cache,sessions,views} \
 RUN composer install --no-dev --optimize-autoloader
 
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+RUN chmod -R 775 storage bootstrap/cache
+
+RUN php artisan config:clear \
+ && php artisan route:clear \
+ && php artisan view:clear
+
 
 CMD ["php-fpm"]
