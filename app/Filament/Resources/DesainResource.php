@@ -39,30 +39,17 @@ class DesainResource extends Resource
                 Forms\Components\FileUpload::make('image')
                     ->label('Thumbnail')
                     ->image()
+                    ->disk('supabase')       // Langsung tunjuk ke disk supabase
+                    ->directory('desains')    // Folder di dalam bucket
+                    ->visibility('public')    // Agar bisa diakses publik
                     ->maxSize(2048)
-                    ->saveUploadedFileUsing(function ($file) {
-                        $extension = $file->getClientOriginalExtension();
-                        $path = 'desains/' . uniqid() . '.' . $extension;
+                    ->required(),
 
-                        $uploaded = \App\Services\SupabaseStorage::upload(
-                            $file->getRealPath(), 
-                            $path
-                        );
-
-                        if (!$uploaded) {
-                            // Ini akan memunculkan pesan error di UI daripada 500 error
-                            throw new \Exception('Gagal mengunggah gambar ke Supabase.');
-                        }
-
-                        return $path;
-                     })
-                     ->required(),
-
-                Forms\Components\TextInput::make('link')
-                    ->label('Link')
-                    ->url('link')
-                    ->placeholder('https://example.com'),
-            ]);
+                    Forms\Components\TextInput::make('link')
+                        ->label('Link')
+                        ->url('link')
+                        ->placeholder('https://example.com'),
+                ]);
     }
 
     public static function table(Table $table): Table

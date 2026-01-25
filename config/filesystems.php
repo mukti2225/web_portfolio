@@ -29,13 +29,14 @@ return [
     */
 
     'supabase' => [
-    'driver' => 'supabase',
-    'key'    => env('SUPABASE_KEY'),
-    'url'    => env('SUPABASE_URL'),
-    'bucket' => env('SUPABASE_BUCKET'),
-    'endpoint' => env('SUPABASE_ENDPOINT'),
-    'public' => true,
-    'default_visibility' => 'public',
+        'driver' => 's3',
+        'key' => env('SUPABASE_ACCESS_KEY_ID'),
+        'secret' => env('SUPABASE_SECRET_ACCESS_KEY'),
+        'region' => 'ap-southeast-1', // Default Supabase
+        'bucket' => 'uploads',   // Nama bucket Anda
+        'endpoint' => env('SUPABASE_S3_ENDPOINT'),
+        'use_path_style_endpoint' => true,
+        'visibility' => 'public',
     ],
 
     'disks' => [
