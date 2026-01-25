@@ -40,19 +40,18 @@ class DesainResource extends Resource
                     ->label('Thumbnail')
                     ->image()
                     ->maxSize(2048)
-                    ->disk('public')
-                    ->directory('temp')
                     ->saveUploadedFileUsing(function ($file) {
                         $path = 'desains/' . uniqid() . '.' . $file->getClientOriginalExtension();
 
-                        SupabaseStorage::upload(
-                            $file->getRealPath(),
-                            $path
+                        $uploaded = SupabaseStorage::upload(
+                        $file->getRealPath(),
+                        $path
                         );
 
-                        return $path;
+                        return $uploaded ? $path : null;
                      })
-                    ->required(),
+                     ->formatStateUsing(fn ($state) => $state)
+                     ->required(),
 
                 Forms\Components\TextInput::make('link')
                     ->label('Link')
