@@ -12,6 +12,7 @@ class Desain extends Model
     {
         return Attribute::get(fn () => SupabaseStorage::publicUrl($this->image));
     }
+    
     protected $fillable = [
     'title',
     'image',
