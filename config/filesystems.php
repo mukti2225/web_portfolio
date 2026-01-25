@@ -28,16 +28,6 @@ return [
     |
     */
 
-    'supabase' => [
-        'driver' => 's3',
-        'key' => env('SUPABASE_ACCESS_KEY_ID'),
-        'secret' => env('SUPABASE_SECRET_ACCESS_KEY'),
-        'region' => 'ap-southeast-1', // Default Supabase
-        'bucket' => 'uploads',   // Nama bucket Anda
-        'endpoint' => env('SUPABASE_S3_ENDPOINT'),
-        'use_path_style_endpoint' => true,
-        'visibility' => 'public',
-    ],
 
     'disks' => [
 
@@ -69,6 +59,17 @@ return [
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
             'throw' => false,
             'report' => false,
+        ],
+
+        'supabase' => [
+            'driver' => 's3',
+            'key' => env('SUPABASE_ACCESS_KEY_ID'),
+            'secret' => env('SUPABASE_SECRET_ACCESS_KEY'),
+            'region' => 'ap-southeast-1', // Default Supabase
+            'bucket' => 'uploads',   // Nama bucket Anda
+            'endpoint' => env('SUPABASE_S3_ENDPOINT'),
+            'use_path_style_endpoint' => true,
+            'visibility' => 'public',
         ],
 
     ],
