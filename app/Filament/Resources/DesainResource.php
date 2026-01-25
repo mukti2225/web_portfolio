@@ -38,7 +38,7 @@ class DesainResource extends Resource
 
                 Forms\Components\FileUpload::make('image')
                     ->label('Thumbnail')
-                    ->storeFiles(false)
+                    ->image()
                     ->maxSize(2048)
                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
                     ->saveUploadedFileUsing(function ($file) {
