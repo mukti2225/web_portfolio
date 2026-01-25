@@ -31,7 +31,7 @@
                 <!-- Card -->
                 <div class="col-6 col-md-4 col-lg-3">
                     <a href="{{ $design->link }}" class="image-card">
-                        <img src="{{ asset('storage/' . $design->image) }}">
+                        <img src="{{ \App\Services\SupabaseStorage::publicUrl($design->image) }}">
                         <div class="card-overlay">
                             <h3 class="card-title">{{ $design->title }}</h3>
                         </div>
