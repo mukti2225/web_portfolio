@@ -59,6 +59,7 @@ class DesainResource extends Resource
                 Tables\Columns\ImageColumn::make('image')
                     ->label('Gambar')
                     ->disk('supabase')
+                    ->visibility('public')
                     ->height(80),
 
                 Tables\Columns\TextColumn::make('title')
