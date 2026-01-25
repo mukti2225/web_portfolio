@@ -38,22 +38,14 @@ class DesainResource extends Resource
 
                 Forms\Components\FileUpload::make('image')
                     ->label('Thumbnail')
-                    ->image()
+                    >image()
+                    ->maxSize(2048)
                     ->disk('public')
                     ->directory('temp')
-                    ->maxSize(2048)
+                    ->visibility('private')
+                    ->required()
+                    ->helperText('Maksimal 2MB. Format: JPG, PNG, WEBP')
                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
-                    ->saveUploadedFileUsing(function ($file) {
-                        logger('UPLOAD DIPANGGIL');
-                        $path = 'desains/' . uniqid() . '.' . $file->getClientOriginalExtension();
-
-                        SupabaseStorage::upload(
-                            $file->getRealPath(),
-                            $path
-                        );
-
-                        return $path;
-                     })
                     ->required(),
 
                 Forms\Components\TextInput::make('link')
@@ -70,8 +62,8 @@ class DesainResource extends Resource
                 Tables\Columns\ImageColumn::make('image')
                     ->label('Gambar')
                     ->getStateUsing(fn ($record) =>
-                        SupabaseStorage::publicUrl($record->image)
-                        )
+                       $record->image ? SupabaseStorage::publicUrl($record->image) : null
+                    )
                     ->height(80),
 
                 Tables\Columns\TextColumn::make('title')
@@ -89,12 +81,26 @@ class DesainResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make()
+                ->before(function ($record) {
+                        // Hapus file dari Supabase sebelum delete record
+                        if ($record->image) {
+                            SupabaseStorage::delete($record->image);
+                        }
+                    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                    Tables\Actions\DeleteBulkAction::make()
+                    ->before(function ($records) {
+                            // Hapus semua file dari Supabase
+                            foreach ($records as $record) {
+                                if ($record->image) {
+                                    SupabaseStorage::delete($record->image);
+                                }
+                            }
+                        }),
+                  ]),
             ]);
     }
 
