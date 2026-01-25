@@ -41,16 +41,21 @@ class DesainResource extends Resource
                     ->image()
                     ->maxSize(2048)
                     ->saveUploadedFileUsing(function ($file) {
-                        $path = 'desains/' . uniqid() . '.' . $file->getClientOriginalExtension();
+                        $extension = $file->getClientOriginalExtension();
+                        $path = 'desains/' . uniqid() . '.' . $extension;
 
-                        $uploaded = SupabaseStorage::upload(
-                        $file->getRealPath(),
-                        $path
+                        $uploaded = \App\Services\SupabaseStorage::upload(
+                            $file->getRealPath(), 
+                            $path
                         );
 
-                        return $uploaded ? $path : null;
+                        if (!$uploaded) {
+                            // Ini akan memunculkan pesan error di UI daripada 500 error
+                            throw new \Exception('Gagal mengunggah gambar ke Supabase.');
+                        }
+
+                        return $path;
                      })
-                     ->formatStateUsing(fn ($state) => $state)
                      ->required(),
 
                 Forms\Components\TextInput::make('link')
