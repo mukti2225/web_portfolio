@@ -39,9 +39,9 @@ class DesainResource extends Resource
                 Forms\Components\FileUpload::make('image')
                     ->label('Thumbnail')
                     ->image()
-                    ->storeFiles(false)
                     ->maxSize(2048)
-                    // ->directory('desains')
+                    ->disk('public')
+                    ->directory('temp')
                     ->saveUploadedFileUsing(function ($file) {
                         $path = 'desains/' . uniqid() . '.' . $file->getClientOriginalExtension();
 
