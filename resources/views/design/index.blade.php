@@ -27,13 +27,13 @@
 
             <!-- Gallery Grid -->
             <div class="row g-4">
-                @foreach($desains as $design)
+                @foreach($desains as $desain)
                 <!-- Card -->
                 <div class="col-6 col-md-4 col-lg-3">
-                    <a href="{{ $design->link }}" class="image-card">
-                        <img src="{{ $design->image_url }}" alt="{{ $design->title }}">
+                    <a href="{{ $desain->link }}" class="image-card">
+                        <img src="{{ $desain->image_url }}" alt="{{ $desain->title }}">
                         <div class="card-overlay">
-                            <h3 class="card-title">{{ $design->title }}</h3>
+                            <h3 class="card-title">{{ $desain->title }}</h3>
                         </div>
                     </a>
                 </div>
