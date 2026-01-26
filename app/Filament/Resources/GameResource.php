@@ -2,16 +2,21 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\GameResource\Pages;
-use App\Filament\Resources\GameResource\RelationManagers;
-use App\Models\Game;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
+use App\Models\Game;
 use Filament\Tables;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use App\Services\SupabaseStorage;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\GameResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\GameResource\RelationManagers;
 
 class GameResource extends Resource
 {
@@ -33,7 +38,10 @@ class GameResource extends Resource
                 Forms\Components\FileUpload::make('image')
                     ->label('Thumbnail')
                     ->image()
-                    ->directory('games')
+                    ->disk('supabase')       // Langsung tunjuk ke disk supabase
+                    ->directory('games')    // Folder di dalam bucket
+                    ->visibility('public')    // Agar bisa diakses publik
+                    ->maxSize(2048)
                     ->required(),
 
                 Forms\Components\TextInput::make('link')
@@ -48,7 +56,10 @@ class GameResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make('image')
-                    ->label('Gambar'),
+                    ->label('Gambar')
+                    ->disk('supabase')
+                    ->visibility('public')
+                    ->height(80),
 
                 Tables\Columns\TextColumn::make('title')
                     ->label('Judul')
