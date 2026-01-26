@@ -5,7 +5,7 @@
 @endpush
 
 @php
-    $supabase = "https://uoboellrhnbmduyqqunz.supabase.co/storage/v1/object/public/uploads/desains/";
+    $supabaseUrl = 'https://uoboellrhnbmduyqqunz.supabase.co/storage/v1/object/public/uploads/desains/';
 @endphp
 
 @section('navbar')
@@ -35,7 +35,7 @@
                 <!-- Card -->
                 <div class="col-6 col-md-4 col-lg-3">
                     <a href="{{ $desain->link }}" class="image-card">
-                        <img src="{{ $supabase . $desain->image }}" alt="{{ $desain->title }}">
+                        <img src="{{ $supabaseUrl . $desain->image }}" alt="{{ $desain->title }}">
                         <div class="card-overlay">
                             <h3 class="card-title">{{ $desain->title }}</h3>
                         </div>
