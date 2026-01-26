@@ -35,7 +35,7 @@
                 <!-- Card -->
                 <div class="col-6 col-md-4 col-lg-3">
                     <a href="{{ $game->link }}" class="image-card">
-                        <img src="{{ $supabaseUrl . $game->image) }}">
+                        <img src="{{ $supabaseUrl . $game->image }}">
                         <div class="card-overlay">
                             <h3 class="card-title">{{ $game->title }}</h3>
                         </div>

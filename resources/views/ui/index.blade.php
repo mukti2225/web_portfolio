@@ -35,7 +35,7 @@
                 <!-- Card -->
                 <div class="col-6 col-md-4 col-lg-3">
                     <a href="{{ $ui->link }}" class="image-card">
-                        <img src="{{ $supabaseUrl . $ui->image) }}">
+                        <img src="{{ $supabaseUrl . $ui->image }}">
                         <div class="card-overlay">
                             <h3 class="card-title">{{ $ui->title }}</h3>
                         </div>
