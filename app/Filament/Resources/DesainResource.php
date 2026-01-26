@@ -58,8 +58,9 @@ class DesainResource extends Resource
             ->columns([
                 Tables\Columns\ImageColumn::make('image')
                     ->label('Gambar')
-                    ->disk('supabase')
-                    ->visibility('public')
+                    ->getStateUsing(fn ($record) =>
+                        'https://uoboellrhnbmduyqqunz.supabase.co/storage/v1/object/public/uploads/' . $record->image
+                    )
                     ->height(80),
 
                 Tables\Columns\TextColumn::make('title')
