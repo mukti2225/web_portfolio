@@ -4,6 +4,10 @@
 <link rel="stylesheet" href="{{ asset('css/design.css') }}">
 @endpush
 
+@php
+    $supabase = "https://uoboellrhnbmduyqqunz.supabase.co/storage/v1/object/public/uploads/desains/";
+@endphp
+
 @section('navbar')
 @endsection
 
@@ -31,7 +35,7 @@
                 <!-- Card -->
                 <div class="col-6 col-md-4 col-lg-3">
                     <a href="{{ $desain->link }}" class="image-card">
-                        <img src="{{ $desain->image_url }}" alt="{{ $desain->title }}">
+                        <img src="{{ $supabase . $desain->image }}" alt="{{ $desain->title }}">
                         <div class="card-overlay">
                             <h3 class="card-title">{{ $desain->title }}</h3>
                         </div>
