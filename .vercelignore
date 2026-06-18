@@ -1,1 +1,16 @@
-/vendor
+# Abaikan folder node_modules jika Anda tidak sengaja menginstalnya
+
+node_modules/
+
+# Abaikan file/folder git dan dokumentasi pustaka
+
+.git/
+.github/
+README.md
+LICENSE
+
+# Abaikan folder aset statis berukuran besar jika ada (seperti video/gambar mentah)
+
+# Pindahkan aset besar ini ke folder public/ agar disajikan lewat CDN, bukan lewat fungsi serverless
+
+assets/raw-videos/
